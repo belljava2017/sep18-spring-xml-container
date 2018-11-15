@@ -10,49 +10,74 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
     <!-- Injecting through Construtor-->
-    <bean id="hp" class="com.bellinfo.advanced.spring.ioc.Laptop">
+    <bean id="hp" class="com.bellinfo.advanced.spring.xml.ioc.Laptop">
 
         <constructor-arg index="0" value="hp pivilain"/>
         <constructor-arg index="1" value="500"/>
     </bean>
 
-    <bean id="hpx" class="com.bellinfo.advanced.spring.ioc.Laptop">
+    <bean id="hpx" class="com.bellinfo.advanced.spring.xml.ioc.Laptop">
 
         <constructor-arg index="0" value="hpx"/>
         <constructor-arg index="1" value="700"/>
     </bean>
 
     <!-- Injecting through Setter-->
-    <bean id="m1" class="com.bellinfo.advanced.spring.ioc.Movie">
+    <bean id="m1" class="com.bellinfo.advanced.spring.xml.ioc.Movie">
         <property name="name" value="Breaking Bad"/>
         <property name="rating" value="5.0"/>
      </bean>
 
-    <bean id="address" class="com.bellinfo.advanced.spring.ioc.Address">
+    <bean id="address" class="com.bellinfo.advanced.spring.xml.ioc.Address">
         <constructor-arg index="0" value="123"/>
         <constructor-arg index="1" value="Dogwood"/>
         <constructor-arg index="2" value="Sterling"/>
     </bean>
 
-    <bean id="customer" class="com.bellinfo.advanced.spring.ioc.Customer">
+    <bean id="customer" class="com.bellinfo.advanced.spring.xml.ioc.Customer">
         <constructor-arg ref="address"/>
         <property name="name" value="Siva"/>
     </bean>
 
-    <bean id="car" class="com.bellinfo.advanced.spring.ioc.Car" lazy-init="true">
+    <bean id="car" class="com.bellinfo.advanced.spring.xml.ioc.Car" lazy-init="true">
         <constructor-arg index="0" value="BMW"/>
         <constructor-arg index="1" value="32000"/>
     </bean>
 
 
-    <bean id="service" class="com.bellinfo.advanced.spring.ioc.SomeService" factory-method="getInstance">
+    <bean id="service" class="com.bellinfo.advanced.spring.xml.ioc.SomeService" factory-method="getInstance">
 
     </bean>
 
-    <bean id="con" class="com.bellinfo.advanced.spring.ioc.DBConnection">
+    <bean id="con" class="com.bellinfo.advanced.spring.xml.ioc.DBConnection">
         <property name="dbDetails">
             <util:properties location="classpath:application.properties"/>
         </property>
+
+    </bean>
+
+    <!--Autowire can be on secondary type not on primary/primitive. Autowire byName - then it must match the varibale name
+    with id attribute
+      Autowire byType then it must match the class name and should have only one bean eligible with autowire(more than one bean,
+      you will get conflict) , so make sure other candidate autowire-candidate= false-->
+    <bean id ="bobj" class="com.bellinfo.advanced.spring.xml.ioc.xmlautowired.B"/>
+
+    <bean id ="b1" class="com.bellinfo.advanced.spring.xml.ioc.xmlautowired.B" autowire-candidate="false"/>
+
+    <bean id="a" class="com.bellinfo.advanced.spring.xml.ioc.xmlautowired.A" autowire="byType" >
+    </bean>
+
+
+    <bean id="department" class="com.bellinfo.advanced.spring.xml.ioc.xmlautowired.Department">
+        <property name="name" value="IT"/>
+    </bean>
+
+    <bean id="department1" class="com.bellinfo.advanced.spring.xml.ioc.xmlautowired.Department">
+        <property name="name" value="HR"/>
+    </bean>
+
+
+    <bean id="emp" class="com.bellinfo.advanced.spring.xml.ioc.xmlautowired.Employee" autowire="constructor">
 
     </bean>
 

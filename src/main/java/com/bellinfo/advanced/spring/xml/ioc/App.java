@@ -1,5 +1,7 @@
-package com.bellinfo.advanced.spring.ioc;
+package com.bellinfo.advanced.spring.xml.ioc;
 
+import com.bellinfo.advanced.spring.xml.ioc.xmlautowired.A;
+import com.bellinfo.advanced.spring.xml.ioc.xmlautowired.Employee;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -27,6 +29,11 @@ public class App
         DBConnection connection = context.getBean("con",DBConnection.class);
         System.out.println(connection);
 
+        A aObj = context.getBean("a",A.class);
+        System.out.println(aObj);
+
+        Employee e = context.getBean("emp", Employee.class);
+        System.out.println(e);
 
     }
 }

@@ -1,15 +1,18 @@
-package com.bellinfo.advanced.spring.ioc;
+package com.bellinfo.advanced.spring.annotation.ioc;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+
+
 
 public class Laptop {
 
+    @Value("${hp.name}")
     String name;
+
+    @Value("${hp.cost}")
     double cost;
 
-    public Laptop(String name, double cost) {
-        System.out.println("I'm inside Laptop and created at application start up");
-        this.name = name;
-        this.cost = cost;
-    }
 
     @Override
     public String toString() {

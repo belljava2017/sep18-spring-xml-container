@@ -1,4 +1,4 @@
-package com.bellinfo.advanced.spring.ioc;
+package com.bellinfo.advanced.spring.xml.ioc;
 
 public class Movie {
     String name;

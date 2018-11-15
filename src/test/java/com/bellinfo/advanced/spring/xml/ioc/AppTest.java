@@ -1,4 +1,4 @@
-package com.bellinfo.advanced.spring.ioc;
+package com.bellinfo.advanced.spring.xml.ioc;
 
 import static org.junit.Assert.assertTrue;
 
